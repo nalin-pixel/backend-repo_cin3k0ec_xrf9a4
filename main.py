@@ -161,13 +161,25 @@ async def init_path(payload: InitPathPayload):
 
 @app.get("/recommendations")
 async def get_recommendations(userId: str):
-    """Return simple recommendations: top resources matching user's interests or recent gaps."""
+    """Return simple recommendations: top resources matching user's interests or recent gaps.
+    For MVP, we embed resource details so the frontend can display titles/links without extra fetches.
+    """
     try:
         user = db["user"].find_one({"_id": __import__('bson').ObjectId(userId)}) if len(userId) == 24 else db["user"].find_one({"email": userId})
         interests = user.get("interests", []) if user else []
         q = {"topic": {"$in": interests}} if interests else {}
         resources = list(db["resource"].find(q).limit(6))
-        items = [{"type": "resource", "id": str(r["_id"]), "score": 0.8, "explanation": f"Matches your interest in {r.get('topic')}"} for r in resources]
+        items = []
+        for r in resources:
+            items.append({
+                "type": "resource",
+                "id": str(r["_id"]),
+                "title": r.get("title"),
+                "topic": r.get("topic"),
+                "url": r.get("url"),
+                "score": 0.8,
+                "explanation": f"Matches your interest in {r.get('topic')}"
+            })
         return {"userId": userId, "items": items, "createdAt": datetime.now(timezone.utc)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

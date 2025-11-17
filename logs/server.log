@@ -1,7 +1,19 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [193] using StatReload
-INFO:     Started server process [195]
+INFO:     Started reloader process [272] using StatReload
+INFO:     Started server process [274]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:46012 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:43702 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:38236 - "GET /catalog/courses HTTP/1.1" 200 OK
+INFO:     172.20.0.1:38236 - "GET /catalog/courses HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52330 - "GET /catalog/courses HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52334 - "POST /bootstrap HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52330 - "POST /bootstrap HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52334 - "POST /auth/signup HTTP/1.1" 500 Internal Server Error
+INFO:     172.20.0.1:52330 - "POST /auth/signup HTTP/1.1" 500 Internal Server Error
+INFO:     172.20.0.1:52338 - "GET /catalog/courses HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52338 - "POST /bootstrap HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52330 - "POST /bootstrap HTTP/1.1" 200 OK
+INFO:     172.20.0.1:52330 - "POST /auth/signup HTTP/1.1" 500 Internal Server Error
+INFO:     172.20.0.1:52338 - "POST /auth/signup HTTP/1.1" 500 Internal Server Error
